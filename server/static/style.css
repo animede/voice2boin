@@ -1,0 +1,276 @@
+:root {
+  --color-a: #ef476f;
+  --color-i: #ffd166;
+  --color-u: #06d6a0;
+  --color-e: #118ab2;
+  --color-o: #8338ec;
+  --color-n: #adb5bd;
+  --color-pause: #e9ecef;
+  --bg: #f7f8fb;
+  --panel-bg: #ffffff;
+  --text: #22223b;
+  --muted: #6c757d;
+  --border: #e2e5eb;
+  --accent: #4361ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+header h1 {
+  margin: 0 0 4px;
+  font-size: 28px;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.field {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input[type="file"],
+textarea,
+select {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  cursor: pointer;
+}
+
+#analyze-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+
+#analyze-btn:hover {
+  opacity: 0.9;
+}
+
+#analyze-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#status {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+#status.error {
+  color: #d00000;
+}
+
+.hint {
+  margin: 0;
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--muted);
+}
+
+.synthesize-row {
+  display: flex;
+  gap: 8px;
+}
+
+.synthesize-row select {
+  flex: 1;
+}
+
+#synthesize-btn {
+  background: var(--panel-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+#synthesize-btn:hover {
+  opacity: 0.85;
+}
+
+#synthesize-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#tts-status {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+#tts-status.error {
+  color: #d00000;
+}
+
+audio {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.timeline {
+  position: relative;
+  height: 60px;
+  background: var(--color-pause);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.timeline-segment {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+
+.timeline-segment:hover,
+.timeline-segment.active {
+  filter: brightness(0.85);
+}
+
+.timeline-segment.active {
+  outline: 2px solid var(--text);
+  outline-offset: -2px;
+}
+
+.timeline-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s;
+  margin-bottom: 6px;
+}
+
+.timeline-segment:hover .timeline-tooltip {
+  opacity: 1;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+tr.active-row {
+  background: #eef1ff;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 0;
+}
+
+#json-output {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+  max-height: 400px;
+}

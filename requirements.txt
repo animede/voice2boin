@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-multipart
+pyopenjtalk
+soundfile
+pytest
+httpx
+
+# JuliusAligner (本番用) を使う場合は以下を別途インストールしてください。
+# julius4seg は通常のpip配布ではないため必須依存にはしていません。
+#   pip install git+https://github.com/Hiroshiba/julius4seg
+# あわせて Julius 本体 と 日本語音響モデル(dictation-kit等) のセットアップが必要です。
+# 詳細は README.md を参照してください。

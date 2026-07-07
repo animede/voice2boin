@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>voice2boin - 母音タイミング抽出</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>voice2boin</h1>
+    <p class="subtitle">日本語音声から母音タイミングを抽出し、リップシンク用データを生成します</p>
+  </header>
+
+  <section class="panel">
+    <form id="analyze-form">
+      <div class="field">
+        <label for="audio-file">音声ファイル (wav)</label>
+        <input type="file" id="audio-file" accept="audio/*" required>
+      </div>
+
+      <div class="field">
+        <label for="text-input">読み上げ原稿テキスト</label>
+        <textarea id="text-input" rows="4" placeholder="こんにちは、今日もいい天気ですね。" required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="speaker-select">AivisSpeechで音声合成</label>
+        <p class="hint">原稿テキストをAivisSpeech Engineで音声合成し、上の音声ファイル欄にセットします。手動アップロードも引き続き使えます。</p>
+        <div class="synthesize-row">
+          <select id="speaker-select"></select>
+          <button type="button" id="synthesize-btn">音声合成</button>
+        </div>
+        <div id="tts-status"></div>
+      </div>
+
+      <div class="field">
+        <label for="mode-select">アライメントモード</label>
+        <select id="mode-select">
+          <option value="mock" selected>mock (デモ・テスト用)</option>
+          <option value="julius">julius (本番用・要セットアップ)</option>
+        </select>
+      </div>
+
+      <button type="submit" id="analyze-btn">解析する</button>
+    </form>
+    <div id="status"></div>
+  </section>
+
+  <section class="panel" id="result-panel" hidden>
+    <h2>再生</h2>
+    <audio id="audio-player" controls></audio>
+
+    <h2>タイムライン</h2>
+    <div class="legend" id="legend"></div>
+    <div id="timeline" class="timeline"></div>
+
+    <h2>セグメント一覧</h2>
+    <table id="segments-table">
+      <thead>
+        <tr><th>母音</th><th>開始 (秒)</th><th>終了 (秒)</th><th>長さ (秒)</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>
+      <button id="toggle-json" class="link-btn" type="button">生JSON表示 ▸</button>
+    </h2>
+    <pre id="json-output" hidden></pre>
+  </section>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
