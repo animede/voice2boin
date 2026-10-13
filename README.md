@@ -119,3 +119,9 @@ uvicorn server.app:app --reload
 
 環境変数が不足している場合、`JuliusAligner` は分かりやすいエラーメッセージ(この
 READMEを参照するよう促すメッセージ)を出して失敗します。
+
+## ライセンス
+
+本リポジトリのソースコードは [Apache License 2.0](LICENSE) で提供します。
+著作権者: © 2026 YUZUKI (animede)。著作権表示と [NOTICE](NOTICE) の内容は、再配布時も保持してください。
+モデルや依存ライブラリ等には各配布元のライセンスが別途適用されます。
